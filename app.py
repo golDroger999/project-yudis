@@ -53,7 +53,7 @@ def main():
     note_form = st.text_area('Note')
     
     with st.expander('FORM INPUT'):
-        col1,col3,col2 = st.columns(3) 
+        col1,col2 = st.columns(2) 
         with col1:
             drive_model = st.text_input("Drive Model")
             drive_serial_number = st.text_input("Drive Serial Number")
@@ -64,9 +64,10 @@ def main():
             jumlah_temuan = st.text_input("Jumlah Temuan")
             jenis_temuan = st.text_input("Jenis Temuan")
             
-        with col3:
-            st.write('')
-            
+        # with col3:
+        #     st.write('')
+        
+    with st.expander('status'):    
         with col2:
             status_drive_model = st.selectbox("Status Drive Model", ('verified', "match"))
             status_drive_serial_number = st.selectbox("Status Drive Serial Number", ('verified', "match"))
