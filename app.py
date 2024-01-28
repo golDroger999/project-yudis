@@ -84,7 +84,7 @@ def main():
                                 file_name=f'laporan.docx',
                                 mime='application/vnd.openxmlformats-officedocument.wordprocessingml.document')  
             
-        st.success('LAPORAN BERHASIL DIBUAT')
+        st.success('LAPORAN BERHASIL ')
 
 if __name__ == "__main__":
     main()
