@@ -42,26 +42,36 @@ def generate_word_document(drive_model,
 
 def main():
     st.subheader("PROJECT YUDIS")
-    col1, col2 = st.columns(2) 
-    with col1:
-        drive_model = st.text_input("Drive Model")
-        drive_serial_number = st.text_input("Drive Serial Number")
-        source_data_size = st.text_input("Source Data Size")
-        sector_count = st.text_input("Sector count")
-        md5_checksum = st.text_input("MD5 Checksum")
-        sha5_checksum = st.text_input("SHA5 Checksum")
-        jumlah_temuan = st.text_input("Jumlah Temuan")
-        jenis_temuan = st.text_input("Jenis Temuan")
+    colname, coldate= st.columns(2)
+    with colname:
+        nama_form = st.text_input('Document Name')
         
-    with col2:
-        status_drive_model = st.selectbox("Status Drive Model", ('verified', "match"))
-        status_drive_serial_number = st.selectbox("Status Drive Serial Number", ('verified', "match"))
-        status_source_data_size = st.selectbox("Status Source Data Size", ('verified', "match"))
-        status_sector_count = st.selectbox("Status Sector count", ('verified', "match"))
-        status_md5_checksum = st.selectbox("Status MD5 Checksum", ('verified', "match"))
-        status_sha5_checksum = st.selectbox("Status SHA5 Checksum", ('verified', "match"))
-        status_jumlah_temuan = st.selectbox("Status Jumlah Temuan", ('verified', "match"))
-        status_jenis_temuan = st.selectbox("Status Jenis Temuan", ('verified', "match"))  
+    with coldate:
+        date_form = st.date_input('Date Input')
+    
+    note_form = st.text_area('Note')
+    
+    with st.expander('FORM INPUT'):
+        col1, col2 = st.columns(2) 
+        with col1:
+            drive_model = st.text_input("Drive Model")
+            drive_serial_number = st.text_input("Drive Serial Number")
+            source_data_size = st.text_input("Source Data Size")
+            sector_count = st.text_input("Sector count")
+            md5_checksum = st.text_input("MD5 Checksum")
+            sha5_checksum = st.text_input("SHA5 Checksum")
+            jumlah_temuan = st.text_input("Jumlah Temuan")
+            jenis_temuan = st.text_input("Jenis Temuan")
+            
+        with col2:
+            status_drive_model = st.selectbox("Status Drive Model", ('verified', "match"))
+            status_drive_serial_number = st.selectbox("Status Drive Serial Number", ('verified', "match"))
+            status_source_data_size = st.selectbox("Status Source Data Size", ('verified', "match"))
+            status_sector_count = st.selectbox("Status Sector count", ('verified', "match"))
+            status_md5_checksum = st.selectbox("Status MD5 Checksum", ('verified', "match"))
+            status_sha5_checksum = st.selectbox("Status SHA5 Checksum", ('verified', "match"))
+            status_jumlah_temuan = st.selectbox("Status Jumlah Temuan", ('verified', "match"))
+            status_jenis_temuan = st.selectbox("Status Jenis Temuan", ('verified', "match"))  
         
     if st.button('buat laporan'):
         generate_word_document(drive_model, drive_serial_number,  source_data_size, sector_count,
@@ -73,6 +83,8 @@ def main():
                                 data=f,
                                 file_name=f'laporan.docx',
                                 mime='application/vnd.openxmlformats-officedocument.wordprocessingml.document')  
+            
+        st.success('LAPORAN BERHASIL DIBUAT')
 
 if __name__ == "__main__":
     main()
